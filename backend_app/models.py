@@ -42,8 +42,8 @@ class Product(models.Model):
     unit = models.ForeignKey(Unit, related_name="product", on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name="products", on_delete=models.CASCADE)
     supplier = models.ForeignKey(Supplier, related_name="products", on_delete=models.CASCADE)
-    selling_price = models.DecimalField(max_digits=10)
-    cost_price = models.DecimalField(max_digits=10)
+    selling_price = models.DecimalField(max_digits=10, decimal_places=8)
+    cost_price = models.DecimalField(max_digits=10, decimal_places=8)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -60,10 +60,10 @@ class TransactionType(models.Model):
 
 class Transaction(models.Model):
     name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=10, null=True)
-    quantity = models.DecimalField(max_digits=10, null=True)
-    discount = models.DecimalField(max_digits=10, default=0)
-    amount = models.DecimalField(max_digits=10)
+    price = models.DecimalField(max_digits=10, null=True, decimal_places=8)
+    quantity = models.DecimalField(max_digits=10, null=True, decimal_places=8)
+    discount = models.DecimalField(max_digits=10, default=0, decimal_places=8)
+    amount = models.DecimalField(max_digits=10, decimal_places=8)
     notes = models.TextField(null=True)
     is_bounced = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
