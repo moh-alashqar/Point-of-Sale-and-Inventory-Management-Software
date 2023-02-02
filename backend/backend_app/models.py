@@ -2,8 +2,8 @@ from django.db import models
 
 class Customer(models.Model):
     name = models.CharField(max_length=255)
-    mobile = models.CharField(max_length=255)
-    credit_limit = models.IntegerField()
+    mobile = models.CharField(max_length=255, null=True)
+    credit_limit = models.IntegerField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -12,9 +12,9 @@ class Customer(models.Model):
 
 class Supplier(models.Model):
     name = models.CharField(max_length=255)
-    mobile = models.CharField(max_length=255)
-    rep_name = models.CharField(max_length=255)
-    rep_mobile = models.CharField(max_length=255)
+    mobile = models.CharField(max_length=255, null=True)
+    rep_name = models.CharField(max_length=255, null=True)
+    rep_mobile = models.CharField(max_length=255, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
